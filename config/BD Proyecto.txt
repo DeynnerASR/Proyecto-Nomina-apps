@@ -96,3 +96,90 @@
 
 
 //// INSERTSSS /////
+
+
+INSERT INTO cargo (id_cargo, puesto, centro_costo, sueldo)
+VALUES
+  (1, 'Gerente', 'Departamento de Ventas', 5000.00),
+  (2, 'Programador', 'Departamento de TI', 3500.00),
+  (3, 'Contador', 'Departamento de Finanzas', 4000.00),
+  (4, 'Vendedor', 'Departamento de Ventas', 2500.00),
+  (5, 'Diseñador Gráfico', 'Departamento de Marketing', 3000.00);
+
+INSERT INTO empleado (id, nombre, edad, direccion, telefono, id_cargo)
+VALUES
+  (1, 'Juan Pérez', 30, 'Calle 123, Ciudad', '123-456-7890', 1),
+  (2, 'María Rodríguez', 28, 'Calle 456, Ciudad', '987-654-3210', 2),
+  (3, 'Pedro Sánchez', 35, 'Calle 789, Ciudad', '567-890-1234', 3),
+  (4, 'Ana Martínez', 25, 'Calle 1011, Ciudad', '432-109-8765', 4),
+  (5, 'Carlos López', 29, 'Calle 1213, Ciudad', '345-678-9012', 5);
+
+INSERT INTO devengado (
+  dias_laborados,
+  salario_dias_laborados,
+  dias_vacaciones,
+  vacaciones_disfrutadas,
+  auxilio_transporte,
+  dias_incapacidad_eps,
+  dias_incapacidad_arl,
+  pago_incapacidad_eps,
+  pago_incapacidad_arl,
+  horas_nocturnas,
+  horas_dominicales,
+  recargo_nocturno,
+  recargo_dominical,
+  aux_alimentacion,
+  id
+) VALUES
+  (22, 4400.00, 5, 1250.00, 350.00, 0, 0, 0.00, 0.00, 2, 1, 30.00, 50.00, 100.00, 1),
+  (20, 3500.00, 0, 0.00, 0.00, 0, 0, 0.00, 0.00, 0, 0, 0.00, 0.00, 0.00, 2),
+  (22, 4400.00, 7, 1750.00, 350.00, 0, 0, 0.00, 0.00, 3, 4, 45.00, 70.00, 150.00, 3),
+  (18, 4500.00, 4, 1000.00, 0.00, 0, 0, 0.00, 0.00, 1, 0, 0.00, 0.00, 0.00, 4),
+  (22, 3800.00, 6, 1500.00, 0.00, 0, 0, 0.00, 0.00, 2, 2, 20.00, 40.00, 80.00, 5);
+
+INSERT INTO deducciones (
+  salud,
+  pension,
+  fondo_solidaridad_pensional,
+  desembolso,
+  cuotas_a_descontar,
+  fecha_desembolso,
+  cuota_pagada,
+  cuota_por_descontar,
+  termina_prestamo,
+  valor_cuota,
+  saldo_prestamo,
+  id
+) VALUES
+  (200.00, 120.00, 40.00, 0.00, 0, NULL, 0, 0, NULL, 0.00, 0.00, 1),
+  (150.00, 90.00, 30.00, 0.00, 0, NULL, 0, 0, NULL, 0.00, 0.00, 2),
+  (180.00, 108.00, 36.00, 0.00, 0, NULL, 0, 0, NULL, 0.00, 0.00, 3),
+  (210.00, 126.00, 42.00, 0.00, 0, NULL, 0, 0, NULL, 0.00, 0.00, 4),
+  (160.00, 96.00, 32.00, 0.00, 0, NULL, 0, 0, NULL, 0.00, 0.00, 5);
+
+
+INSERT INTO prestaciones_sociales (
+  prima,
+  cesantias,
+  intereses_cesantias,
+  vacaciones,
+  id
+) VALUES
+  (1000.00, 900.00, 90.00, 250.00, 1),
+  (800.00, 720.00, 72.00, 0.00, 2),
+  (950.00, 855.00, 85.50, 210.00, 3),
+  (1100.00, 990.00, 99.00, 0.00, 4),
+  (850.00, 765.00, 76.50, 180.00, 5);
+
+INSERT INTO nomina (
+  total_devengado,
+  total_deducciones,
+  total_prestaciones_sociales,
+  total_nomina,
+  id_empleado
+) VALUES
+  (4400.00, 360.00, 1240.50, 3760.50, 1),
+  (3500.00, 270.00, 792.00, 3478.00, 2),
+  (4400.00, 324.00, 1245.50, 4831.50, 3),
+  (4500.00, 336.00, 1179.00, 4351.00, 4),
+  (3800.00, 288.00, 911.50, 3686.50, 5);
