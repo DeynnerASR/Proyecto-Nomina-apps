@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Consultar Empleados</title>
+    <link rel="stylesheet" href="public/css/base.css">
     <link rel="stylesheet" href="public/css/style.css">
 </head>
 <body>
@@ -47,9 +48,9 @@
                                     <td><?php echo $telefono; ?></td>
                                     <td><?php echo $cargo; ?></td>
                                     <td>
-                                    <?php echo '<a href="views/actualizarEmpleado.php?id='.$id.'"><input type="button" value="Actualizar"></a>'; ?>
+                                    <?php echo '<a href="views/actualizarEmpleado.php?id='.$id.'"><input type="button" value="Actualizar" class="botonUsuario"></a>'; ?>
                                     -
-                                    <?php echo '<a href="models/eliminarEmp.php?id='.$id.'"><input type="button" value="Eliminar"></a>'; ?>
+                                    <?php echo '<a href="models/eliminarEmp.php?id='.$id.'"><input type="button" value="Eliminar" class="botonUsuario"></a>'; ?>
                                     </td>
                                     </tr>
                                 <?php
