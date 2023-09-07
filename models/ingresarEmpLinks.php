@@ -13,9 +13,15 @@ if (isset($_POST['AgregarEmp'])) {
     $consulta ="INSERT INTO empleado VALUES ('$id','$nombre','$edad', '$direccion', '$telefono', '$id_cargo');";
     $result = mysqli_query($con, $consulta);
     if($result){
-        echo '<script>alert("Se agrego correctamente el empleado")</script>';
+        echo '<script>
+        alert("Se agrego correctamente el empleado de la base de datos")
+        location.assign("./../index.php");
+        </script>';
     }else{
-        echo '<script>alert("ERROR: No se agrego el empleado")</script>';
+        echo '<script>
+        alert("FATAL ERROR: NO Se elimino correctamente el empleado de la base de datos")
+        location.assign("./../index.php");
+        </script>';
     }
   exit();
 }
