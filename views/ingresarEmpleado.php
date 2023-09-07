@@ -4,11 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulario de Empleado</title>
+    <link rel="stylesheet" href="./../public/css/base.css">
     <link rel="stylesheet" href="./../public/css/styles.css">
 </head>
 <body>
-    <header>
-        <h1>Formulario de Empleado</h1>
+    <header class="headerAgregar">
+        <h1>Agregar un nuevo empleado</h1>
     </header>
     <form action="./../models/ingresarEmpLinks.php" method="post">
     <div class="container">
@@ -36,7 +37,7 @@
                 <label for="cargo">ID del Cargo a Ocupar:</label>
                 <input type="text" id="cargo" name="cargo" class="form-input" placeholder="ID Cargo" />
             </div>
-            <h2>Lista de Cargos Disponibles</h2>
+            <h2 class="cargosDisponibles">Lista de Cargos Disponibles</h2>
             <table>
                 <tr>
                     <th>ID Cargo</th>
