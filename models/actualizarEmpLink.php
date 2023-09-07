@@ -14,11 +14,15 @@
                     WHERE id = '$id'";
         $result = mysqli_query($con, $consulta);
         if($result){
-          header('Location: ./../index.php');
-          echo '<script>alert("Se actualizo correctamente el empleado")</script>';
+          echo '<script>
+                alert("Se actualizo correctamente el empleado")
+                location.assign("./../index.php");
+                </script>';
         }else{
-            echo '<script>alert("ERROR: No se actualizo el empleado")</script>';
-            header('Location: ./../index.php');
+            '<script>
+            alert("FATAL ERROR: No se actualizo correctamente el empleado")
+            location.assign("./../index.php");
+            </script>';
         }
       exit();
     }

@@ -6,10 +6,18 @@
 </head>
 <body>  
     <header class="title">
-        <h2 >Registros de Nómina</h2>
-        <label>
-            
-        </label>
+        <div>
+            <h2 >Registros de Nómina</h2>
+        </div>
+        
+        <div class="desprendible">
+                Generar desprendible de nómina 
+                <form action="desprendible.php" method="get" target="_blank">
+                    <input type="number" name="id" placeholder="Ingrese c.c empleado">
+                    <input type="submit" value="Generar">
+                </form>
+        </div>
+        
     </header>
    
     <table border="1">
