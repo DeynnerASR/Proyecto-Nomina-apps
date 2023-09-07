@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>Gestión de Nómina</title>
+    <link rel="stylesheet" href="./../public/css/base.css">
     <link rel="stylesheet" href="./../public/css/styleNomina.css">
 </head>
 <body>  
