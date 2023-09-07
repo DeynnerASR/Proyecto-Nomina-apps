@@ -1,0 +1,98 @@
+  Create database nomina;
+
+  use nomina;
+
+
+  CREATE TABLE cargo
+  (
+  id_cargo int NOT NULL,
+  puesto varchar(35),
+  centro_costo varchar(35),
+  sueldo float,
+  PRIMARY KEY (id_cargo)
+  );
+
+  CREATE TABLE empleado
+  (
+  id int NOT NULL,
+  nombre varchar(50),
+  edad int,
+  direccion varchar(50),
+  telefono varchar(20),
+  id_cargo int,
+  PRIMARY KEY (id),
+  FOREIGN KEY (id_cargo)
+    REFERENCES cargo(id_cargo)
+  );
+
+  CREATE TABLE devengado
+  (
+  id_devengado int AUTO_INCREMENT NOT NULL,
+  dias_laborados int DEFAULT 0,
+  salario_dias_laborados float DEFAULT 0,
+  dias_vacaciones int DEFAULT 0,
+  vacaciones_disfrutadas float DEFAULT 0,
+  auxilio_transporte float,
+  dias_incapacidad_eps int DEFAULT 0,
+  dias_incapacidad_arl int DEFAULT 0,
+  pago_incapacidad_eps float DEFAULT 0,
+  pago_incapacidad_arl float DEFAULT 0,
+  horas_nocturnas int DEFAULT 0,
+  horas_dominicales int DEFAULT 0,
+  recargo_nocturno float DEFAULT 0,
+  recargo_dominical float DEFAULT 0,
+  aux_alimentacion float DEFAULT 0,
+  id int,
+  PRIMARY KEY (id_devengado),
+  FOREIGN KEY (id)
+    REFERENCES empleado (id)
+  );
+
+ CREATE TABLE deducciones
+(
+  id_deducciones int AUTO_INCREMENT NOT NULL,
+  salud float,
+  pension float,
+  fondo_solidaridad_pensional float,
+  desembolso float DEFAULT 0,
+  cuotas_a_descontar int DEFAULT 0,
+  fecha_desembolso date,
+  cuota_pagada int DEFAULT 0,
+  cuota_por_descontar int DEFAULT 0,
+  termina_prestamo date,
+  valor_cuota float DEFAULT 0,
+  saldo_prestamo float DEFAULT 0,
+  id int,
+  PRIMARY KEY (id_deducciones),
+  FOREIGN KEY (id)
+    REFERENCES empleado (id)
+);
+
+  CREATE TABLE prestaciones_sociales
+  (
+  id_pres_soci int  AUTO_INCREMENT NOT NULL,
+  prima float,
+  cesantias float,
+  intereses_cesantias float,
+  vacaciones float,
+  id int,
+  PRIMARY KEY (id_pres_soci),
+  FOREIGN KEY (id)
+    REFERENCES empleado (id)
+  );
+
+
+  CREATE TABLE nomina (
+  id_nomina int AUTO_INCREMENT NOT NULL,
+  total_devengado float DEFAULT 0,
+  total_deducciones float DEFAULT 0,
+  total_prestaciones_sociales float DEFAULT 0,
+  total_nomina float DEFAULT 0,
+  id_empleado int,
+  PRIMARY KEY (id_nomina),
+  FOREIGN KEY (id_empleado)
+    REFERENCES empleado (id)
+  );
+
+
+//// INSERTSSS /////
