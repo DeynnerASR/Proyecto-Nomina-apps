@@ -18,15 +18,19 @@
                     $consulta ="DELETE FROM empleado WHERE id = '$id'";
                     $result4 = mysqli_query($con, $consulta);
                     if($result4) {
-                        echo '<script>alert("Se elimino correctamente el empleado")</script>';
-                        header('Location: ./../index.php');
+                        echo '<script>
+                            alert("Se elimino correctamente el empleado de la base de datos")
+                            location.assign("./../index.php");
+                            </script>';
                         }
                     }
                 }
             }
         }else{
-            echo '<script>alert("ERROR: No se elimino el empleado")</script>';
-            header('Location: ./../index.php');
+            echo '<script>
+                alert("FATAL ERROR:NO SE ELIMINO correctamente el empleado")
+                location.assign("./../index.php");
+                </script>';
         }
 
     ?>
