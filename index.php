@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Consultar Empleados</title>
     <link rel="stylesheet" href="public/css/base.css">
-    <link rel="stylesheet" href="public/css/style.css">
+    <link rel="stylesheet" href="public/css/styleIndex.css">
 </head>
 <body>
     <header>
