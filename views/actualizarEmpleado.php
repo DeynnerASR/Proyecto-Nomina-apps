@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Actualizar Datos del Empleado</title>
+    <link rel="stylesheet" href="./../public/css/base.css">
     <link rel="stylesheet" href="./../public/css/styles.css">
 </head>
 <body>
@@ -54,7 +55,7 @@
                 <label for="cargo">ID del Cargo a Ocupar:</label>
                 <input type="text" id="cargo" name="cargo" class="form-input" placeholder="ID Cargo" value=<?php echo $cargo; ?> />
             </div>
-            <h2>Cargos Disponibles</h2>
+            <h2 class="cargosDisponibles">Cargos Disponibles</h2>
             <table>
                 <tr>
                     <th>ID Cargo</th>
