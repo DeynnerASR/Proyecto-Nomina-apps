@@ -70,3 +70,8 @@ tr:nth-child(even) {
     color:#38424c;
     text-align: center;
 }
+
+p {
+    color: black;
+}
+
