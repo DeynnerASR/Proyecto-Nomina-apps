@@ -46,20 +46,31 @@
                 while($row = mysqli_fetch_assoc($res)){
                     $idEmpleado=$row['id'];
                     $idCargo=$row['id_cargo'];
-                    $puesto=getPuesto($idCargo,$con);
-                    $centroCosto=getCentroCosto($idCargo,$con);
-                    $sueldo=getSueldo($idCargo,$con);
-                    $diasLaborados=getDiasLaborados($idEmpleado,$con);
-                    //Formato
-                    $sueldo=number_format($sueldo['sueldo'], 0, ',', '.');
-                    echo "<tr>
-                            <td>".$row['nombre']."</td>
-                            <td>".$centroCosto['centro_costo']."</td>
-                            <td>".$puesto['puesto']."</td>
-                            <td>".$row['id']."</td>
-                            <td>$".$sueldo."</td>
-                            <td>".$diasLaborados['dias_laborados']."</td>
-                          </tr>";
+                    $sql1 = "SELECT empleado.id 
+                    FROM empleado INNER JOIN nomina
+                    ON (empleado.id = nomina.id_empleado)";
+                    $res1 = mysqli_query($con, $sql1) or die("Error en la Consulta $sql1: " . mysqli_error($con));
+                    if(mysqli_num_rows($res1)>0){
+                        while($row1 = mysqli_fetch_assoc($res1)){
+                            $codEmpleado=$row1['id'];
+                                if($codEmpleado == $idEmpleado){
+                                    $puesto=getPuesto($idCargo,$con);
+                                    $centroCosto=getCentroCosto($idCargo,$con);
+                                    $sueldo=getSueldo($idCargo,$con);
+                                    $diasLaborados=getDiasLaborados($idEmpleado,$con);
+                                    //Formato
+                                    $sueldo=number_format($sueldo['sueldo'], 0, ',', '.');
+                                    echo "<tr>
+                                            <td>".$row['nombre']."</td>
+                                            <td>".$centroCosto['centro_costo']."</td>
+                                            <td>".$puesto['puesto']."</td>
+                                            <td>".$row['id']."</td>
+                                            <td>$".$sueldo."</td>
+                                            <td>".$diasLaborados['dias_laborados']."</td>
+                                        </tr>";
+                                }
+                            }
+                        }
                 }
             }
         ?>
@@ -87,41 +98,52 @@
             while($row = mysqli_fetch_assoc($res)){
                 $idEmpleado=$row['id'];
                 $idCargo=$row['id_cargo'];
+                $sql1 = "SELECT empleado.id 
+                    FROM empleado INNER JOIN devengado
+                    ON (empleado.id = devengado.id)";
+                    $res1 = mysqli_query($con, $sql1) or die("Error en la Consulta $sql1: " . mysqli_error($con));
+                    if(mysqli_num_rows($res1)>0){
+                        while($row1 = mysqli_fetch_assoc($res1)){
+                            $codEmpleado=$row1['id'];
+                                if($codEmpleado == $idEmpleado){
 
-                $diasLaborados=getDiasLaborados($idEmpleado,$con);
-                $sueldoDias=getSueldoDias($idEmpleado,$con);
-                $auxTrans=getAuxTransporte($sueldoDias);
-                $pagoVacaciones=getPagoVacaciones($con,$idEmpleado);
-                $pagoIncapacidadEps=getPagoIncapacidadEps($con,$idEmpleado);
-                $pagoIncapacidadArl=getPagoIncapacidadArl($con,$idEmpleado);
-                $pagoDominical=getPagoDominical($con,$idEmpleado);
-                $pagoNocturno=getPagoNocturno($con,$idEmpleado);
-                $pagoAlimentacion=getPagoAlimentacion($sueldoDias);
-                isertDevengado($sueldoDias,$pagoVacaciones,$auxTrans,$pagoIncapacidadEps,$pagoIncapacidadArl,$pagoNocturno,$pagoDominical,$pagoAlimentacion,$con,$idEmpleado);
-                $totalDevengado=getTotalDevengado($con,$idEmpleado);
-                insertTotalDevengado($con,$totalDevengado,$idEmpleado);
-                //Formato
-                
-                $sueldoDias=number_format($sueldoDias, 0, ',', '.');
-                $auxTrans=number_format($auxTrans, 0, ',', '.');
-                $pagoVacaciones=number_format($pagoVacaciones, 0, ',', '.');
-                $pagoIncapacidadEps=number_format($pagoIncapacidadEps, 0, ',', '.');
-                $pagoIncapacidadArl=number_format($pagoIncapacidadArl, 0, ',', '.');
-                $pagoDominical=number_format($pagoDominical, 0, ',', '.');
-                $pagoNocturno=number_format($pagoNocturno, 0, ',', '.');
-                $pagoAlimentacion=number_format($pagoAlimentacion, 0, ',', '.');
-                $totalDevengado=number_format($totalDevengado, 0, ',', '.');
-                echo "<tr>
-                        <td>$".$sueldoDias."</td>
-                        <td>$".$pagoVacaciones."</td>
-                        <td>$".$auxTrans."</td>
-                        <td>$".$pagoIncapacidadEps."</td>
-                        <td>$".$pagoIncapacidadArl."</td>
-                        <td>$".$pagoNocturno."</td>
-                        <td>$".$pagoDominical."</td>
-                        <td>$".$pagoAlimentacion."</td>
-                        <td>$".$totalDevengado."</td>
-                      </tr>";
+                                $diasLaborados=getDiasLaborados($idEmpleado,$con);
+                                $sueldoDias=getSueldoDias($idEmpleado,$con);
+                                $auxTrans=getAuxTransporte($sueldoDias);
+                                $pagoVacaciones=getPagoVacaciones($con,$idEmpleado);
+                                $pagoIncapacidadEps=getPagoIncapacidadEps($con,$idEmpleado);
+                                $pagoIncapacidadArl=getPagoIncapacidadArl($con,$idEmpleado);
+                                $pagoDominical=getPagoDominical($con,$idEmpleado);
+                                $pagoNocturno=getPagoNocturno($con,$idEmpleado);
+                                $pagoAlimentacion=getPagoAlimentacion($sueldoDias);
+                                isertDevengado($sueldoDias,$pagoVacaciones,$auxTrans,$pagoIncapacidadEps,$pagoIncapacidadArl,$pagoNocturno,$pagoDominical,$pagoAlimentacion,$con,$idEmpleado);
+                                $totalDevengado=getTotalDevengado($con,$idEmpleado);
+                                insertTotalDevengado($con,$totalDevengado,$idEmpleado);
+                                //Formato
+                                
+                                $sueldoDias=number_format($sueldoDias, 0, ',', '.');
+                                $auxTrans=number_format($auxTrans, 0, ',', '.');
+                                $pagoVacaciones=number_format($pagoVacaciones, 0, ',', '.');
+                                $pagoIncapacidadEps=number_format($pagoIncapacidadEps, 0, ',', '.');
+                                $pagoIncapacidadArl=number_format($pagoIncapacidadArl, 0, ',', '.');
+                                $pagoDominical=number_format($pagoDominical, 0, ',', '.');
+                                $pagoNocturno=number_format($pagoNocturno, 0, ',', '.');
+                                $pagoAlimentacion=number_format($pagoAlimentacion, 0, ',', '.');
+                                $totalDevengado=number_format($totalDevengado, 0, ',', '.');
+                                echo "<tr>
+                                        <td>$".$sueldoDias."</td>
+                                        <td>$".$pagoVacaciones."</td>
+                                        <td>$".$auxTrans."</td>
+                                        <td>$".$pagoIncapacidadEps."</td>
+                                        <td>$".$pagoIncapacidadArl."</td>
+                                        <td>$".$pagoNocturno."</td>
+                                        <td>$".$pagoDominical."</td>
+                                        <td>$".$pagoAlimentacion."</td>
+                                        <td>$".$totalDevengado."</td>
+                                    </tr>";
+                                }
+                            }
+                        }
             }
         }
         ?>
@@ -149,48 +171,59 @@
             <th>Total deducciones</th>
         </tr>   
         <?php
-            $sqlDeducciones = "SELECT id FROM empleado"; ;
+            $sqlDeducciones = "SELECT id FROM empleado";
             $resDeducciones = mysqli_query($con, $sqlDeducciones) or die("Error en la Consulta $sql: " . mysqli_error($con));
             if(mysqli_num_rows($res)>0){
                 while($row = mysqli_fetch_array($resDeducciones)){
                     $idEmpleado=$row['id'];
-                    $salud_pension=getSaludPesion($con,$idEmpleado);
-                    $fondoSolidaridad=getFondoSolidaridad($con,$idEmpleado);
-                    $desembolo=getMontoDesembolso($con,$idEmpleado);
-                    $cuotasDescontar= getCuotasDescontar($con,$idEmpleado);
-                    $fechaDesembolso = getFechaDesembolso($con,$idEmpleado);
-                    $cuotaPagada= getCuotaPagada($con,$idEmpleado);
-                    $cuotasPorDescontar = getCuotaPorDescontar($con,$idEmpleado);
-                    $nominaTerminaPrestamo = getTerminaPrestamo($con,$idEmpleado);
-                    $valorCuota = getValorCuota($con,$idEmpleado);
-                    $saldoPrestamo= getSaldoPrestamo($con,$idEmpleado);
-                    insertDeducciones($salud_pension,$salud_pension,$fondoSolidaridad,$saldoPrestamo,$cuotasPorDescontar,$con,$idEmpleado);
-                    $totalDeducciones = getTotalDeducciones($con,$idEmpleado);
-                    insertTotalDeducciones($con,$totalDeducciones,$idEmpleado);
-                    insertTotalNomina($con,$idEmpleado);
+                    $sql1 = "SELECT empleado.id 
+                    FROM empleado INNER JOIN deducciones
+                    ON (empleado.id = deducciones.id)";
+                    $res1 = mysqli_query($con, $sql1) or die("Error en la Consulta $sql1: " . mysqli_error($con));
+                    if(mysqli_num_rows($res1)>0){
+                        while($row1 = mysqli_fetch_assoc($res1)){
+                            $codEmpleado=$row1['id'];
+                                if($codEmpleado == $idEmpleado){
+                                    $salud_pension=getSaludPesion($con,$idEmpleado);
+                                    $fondoSolidaridad=getFondoSolidaridad($con,$idEmpleado);
+                                    $desembolo=getMontoDesembolso($con,$idEmpleado);
+                                    $cuotasDescontar= getCuotasDescontar($con,$idEmpleado);
+                                    $fechaDesembolso = getFechaDesembolso($con,$idEmpleado);
+                                    $cuotaPagada= getCuotaPagada($con,$idEmpleado);
+                                    $cuotasPorDescontar = getCuotaPorDescontar($con,$idEmpleado);
+                                    $nominaTerminaPrestamo = getTerminaPrestamo($con,$idEmpleado);
+                                    $valorCuota = getValorCuota($con,$idEmpleado);
+                                    $saldoPrestamo= getSaldoPrestamo($con,$idEmpleado);
+                                    insertDeducciones($salud_pension,$salud_pension,$fondoSolidaridad,$saldoPrestamo,$cuotasPorDescontar,$con,$idEmpleado);
+                                    $totalDeducciones = getTotalDeducciones($con,$idEmpleado);
+                                    insertTotalDeducciones($con,$totalDeducciones,$idEmpleado);
+                                    insertTotalNomina($con,$idEmpleado);
 
-                    #Formato 
-                    $salud_pension=number_format($salud_pension, 0, ',', '.');
-                    $fondoSolidaridad=number_format($fondoSolidaridad, 0, ',', '.');
-                    $desembolo=number_format($desembolo, 0, ',', '.');
-                    $valorCuota=number_format($valorCuota, 0, ',', '.');
-                    $saldoPrestamo=number_format($saldoPrestamo, 0, ',', '.');
-                    $totalDeducciones=number_format($totalDeducciones, 0, ',', '.');
-                    echo"
-                        <tr>
-                            <td>$".$salud_pension."</td>
-                            <td>$".$salud_pension."</td>
-                            <td>$".$fondoSolidaridad."</td>
-                            <td>$".$desembolo."</td>
-                            <td>".$cuotasDescontar."</td>
-                            <td>".$fechaDesembolso."</td>
-                            <td>".$cuotaPagada."</td>
-                            <td>".$cuotasPorDescontar."</td>
-                            <td>".$nominaTerminaPrestamo."</td>
-                            <td>$".$valorCuota."</td>
-                            <td>$".$saldoPrestamo."</td>
-                            <td>$".$totalDeducciones."</td>
-                        </tr>";
+                                    #Formato 
+                                    $salud_pension=number_format($salud_pension, 0, ',', '.');
+                                    $fondoSolidaridad=number_format($fondoSolidaridad, 0, ',', '.');
+                                    $desembolo=number_format($desembolo, 0, ',', '.');
+                                    $valorCuota=number_format($valorCuota, 0, ',', '.');
+                                    $saldoPrestamo=number_format($saldoPrestamo, 0, ',', '.');
+                                    $totalDeducciones=number_format($totalDeducciones, 0, ',', '.');
+                                    echo"
+                                        <tr>
+                                            <td>$".$salud_pension."</td>
+                                            <td>$".$salud_pension."</td>
+                                            <td>$".$fondoSolidaridad."</td>
+                                            <td>$".$desembolo."</td>
+                                            <td>".$cuotasDescontar."</td>
+                                            <td>".$fechaDesembolso."</td>
+                                            <td>".$cuotaPagada."</td>
+                                            <td>".$cuotasPorDescontar."</td>
+                                            <td>".$nominaTerminaPrestamo."</td>
+                                            <td>$".$valorCuota."</td>
+                                            <td>$".$saldoPrestamo."</td>
+                                            <td>$".$totalDeducciones."</td>
+                                        </tr>";
+                                }
+                            }
+                        }
                 }
             }
         ?>
@@ -210,15 +243,26 @@
             if(mysqli_num_rows($resNomina)>0){
                 while($row = mysqli_fetch_array($resNomina)){
                     $idEmpleado=$row['id'];
-                    $totalNomina=getTotalNomina($con,$idEmpleado);
-                    insertTotalNomina($con,$idEmpleado);
-                    $totalNomina=number_format($totalNomina, 0, ',', '.');
-                    echo"
-                        <tr>
-                            <td>".$row['nombre']."</td>
-                            <td>".$row['id']."</td>
-                            <td>$".$totalNomina."</td>
-                        </tr>";
+                    $sql1 = "SELECT empleado.id 
+                    FROM empleado INNER JOIN nomina
+                    ON (empleado.id = nomina.id_empleado)";
+                    $res1 = mysqli_query($con, $sql1) or die("Error en la Consulta $sql1: " . mysqli_error($con));
+                    if(mysqli_num_rows($res1)>0){
+                        while($row1 = mysqli_fetch_assoc($res1)){
+                            $codEmpleado=$row1['id'];
+                                if($codEmpleado == $idEmpleado){
+                                    $totalNomina=getTotalNomina($con,$idEmpleado);
+                                    insertTotalNomina($con,$idEmpleado);
+                                    $totalNomina=number_format($totalNomina, 0, ',', '.');
+                                    echo"
+                                        <tr>
+                                            <td>".$row['nombre']."</td>
+                                            <td>".$row['id']."</td>
+                                            <td>$".$totalNomina."</td>
+                                        </tr>";
+                                }
+                            }
+                        }
                 }
             }
         ?>
