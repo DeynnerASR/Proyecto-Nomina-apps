@@ -35,7 +35,36 @@
             </div>
             <div class="form-group">
                 <label for="cargo">ID del Cargo a Ocupar:</label>
-                <input type="text" id="cargo" name="cargo" class="form-input" placeholder="ID Cargo" />
+                <select id="cargo_ocupar" name="cargo_ocupar">
+                    <?php 
+                        include("./../config/database.php");
+                        $con = connect();
+                        $consulta1 = "SELECT * FROM cargo";
+                            $result1 = mysqli_query($con, $consulta1);
+                            if($result1){
+                                while($row = $result1->fetch_array()){
+                                    $cod = $row['id_cargo'];
+                                    $puesto = $row['puesto'];
+                                        ?>
+                                            <option value=<?php echo $cod; ?>><?php echo $puesto; ?></option>
+                                        <?php
+                                }
+                            }
+                    ?>
+                    
+                </select>
+                <p>Cargo seleccionado: <span id="cargoSeleccionado"></span></p>
+                <script>
+                    // Obtener el elemento select y el elemento donde mostrar el color seleccionado
+                    const cargo = document.getElementById('cargo_ocupar');
+                    const cargoSeleccionado = document.getElementById('cargoSeleccionado');
+
+                    // Manejar el evento de cambio (cuando se selecciona una opción)
+                    cargo.addEventListener('change', function() {
+                        const cargoElegido = cargo.value;
+                        cargoSeleccionado.textContent = cargoElegido;
+                    });
+                </script>
             </div>
             <h2 class="cargosDisponibles">Lista de Cargos Disponibles</h2>
             <table>
@@ -46,8 +75,6 @@
                     <th>Sueldo</th>
                 </tr>
                 <?php 
-                    include("./../config/database.php");
-                    $con = connect();
                     $consulta = "SELECT * FROM cargo";
                         $result = mysqli_query($con, $consulta);
                         if($result){
