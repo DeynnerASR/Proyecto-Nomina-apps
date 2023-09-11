@@ -9,7 +9,7 @@ if (isset($_POST['AgregarEmp'])) {
     $edad = $_POST['edad'];
     $direccion = $_POST['direccion'];
     $telefono = $_POST['telefono'];
-    $id_cargo = $_POST['cargo'];
+    $id_cargo = $_POST['cargo_ocupar'];
     $consulta ="INSERT INTO empleado VALUES ('$id','$nombre','$edad', '$direccion', '$telefono', '$id_cargo');";
     $result = mysqli_query($con, $consulta);
     if($result){
