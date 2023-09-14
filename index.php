@@ -51,6 +51,8 @@
                                     <?php echo '<a href="views/actualizarEmpleado.php?id='.$id.'"><input type="button" value="Actualizar" class="botonUsuario"></a>'; ?>
                                     -
                                     <?php echo '<a href="models/eliminarEmp.php?id='.$id.'"><input type="button" value="Eliminar" class="botonUsuario"></a>'; ?>
+                                    -
+                                    <?php echo '<a href="views/ingresarNomina.php?id='.$id.'"><input type="button" value="Ingresar nomina" class="botonUsuario"></a>'; ?>
                                     </td>
                                     </tr>
                                 <?php
