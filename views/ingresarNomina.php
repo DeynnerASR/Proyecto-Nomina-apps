@@ -10,20 +10,38 @@
     <header>
         <h1>Ingresar Devengados | Deducciones</h1>
     </header>
+    <?php 
+    include("./../config/database.php");
+    $con = connect();
+    $id = $_GET['id'];
+
+    $consulta = "SELECT e.id, e.nombre, e.telefono, c.puesto
+                    FROM empleado e NATURAL JOIN cargo c 
+                    WHERE id = '$id'";
+    $result1 = mysqli_query($con, $consulta);
+    if($result1){
+        while($row = $result1->fetch_array()){
+            $nombre = $row['nombre'];
+            $telefono = $row['telefono'];
+            $cargo = $row['puesto'];
+        }
+    }
+    
+    ?>
     <form action="" method="post">
     <div class="container">
         <div class="user-info">
             <label for="userId">ID:</label>
-            <input type="text" id="userId" name="userId" class="form-input" placeholder="ID" disabled>
+            <input type="text" id="userId" name="userId" class="form-input" placeholder="ID" value=<?php echo $id; ?> disabled>
 
             <label for="userName">Nombre:</label>
-            <input type="text" id="userName" name="userName" class="form-input" placeholder="Nombre" disabled>
+            <input type="text" id="userName" name="userName" class="form-input" placeholder="Nombre" value=<?php echo $nombre; ?> disabled>
 
             <label for="userPhone">Teléfono:</label>
-            <input type="text" id="userPhone" name="userPhone" class="form-input" placeholder="Teléfono" disabled>
+            <input type="text" id="userPhone" name="userPhone" class="form-input" placeholder="Teléfono" value=<?php echo $telefono; ?> disabled>
 
             <label for="userJob">Cargo:</label>
-            <input type="text" id="userJob" name="userJob" class="form-input" placeholder="Cargo" disabled>
+            <input type="text" id="userJob" name="userJob" class="form-input" placeholder="Cargo" value=<?php echo $cargo; ?> disabled>
         </div>
         <h2 class="subtitulo">Devengados</h2>
                 <div class="form-group">
