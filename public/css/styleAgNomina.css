@@ -44,7 +44,7 @@ label {
     opacity: 0.7;
 }
 
-.form-input:disabled {
+.form-input:readonly {
     background-color: #000000;
     color: #ffffff;
 }
