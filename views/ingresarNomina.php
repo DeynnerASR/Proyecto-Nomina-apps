@@ -10,6 +10,7 @@
     <header>
         <h1>Ingresar Devengados | Deducciones</h1>
     </header>
+    <form action="./../models/ingNominaLinks.php" method="post">
     <?php 
     include("./../config/database.php");
     $con = connect();
@@ -28,20 +29,20 @@
     }
     
     ?>
-    <form action="" method="post">
+    
     <div class="container">
         <div class="user-info">
             <label for="userId">ID:</label>
-            <input type="text" id="userId" name="userId" class="form-input" placeholder="ID" value=<?php echo $id; ?> disabled>
+            <input type="text" id="userId" name="userId" class="form-input" placeholder="ID" value=<?php echo $id; ?> readonly>
 
             <label for="userName">Nombre:</label>
-            <input type="text" id="userName" name="userName" class="form-input" placeholder="Nombre" value=<?php echo $nombre; ?> disabled>
+            <input type="text" id="userName" name="userName" class="form-input" placeholder="Nombre" value=<?php echo $nombre; ?> readonly>
 
             <label for="userPhone">Teléfono:</label>
-            <input type="text" id="userPhone" name="userPhone" class="form-input" placeholder="Teléfono" value=<?php echo $telefono; ?> disabled>
+            <input type="text" id="userPhone" name="userPhone" class="form-input" placeholder="Teléfono" value=<?php echo $telefono; ?> readonly>
 
             <label for="userJob">Cargo:</label>
-            <input type="text" id="userJob" name="userJob" class="form-input" placeholder="Cargo" value=<?php echo $cargo; ?> disabled>
+            <input type="text" id="userJob" name="userJob" class="form-input" placeholder="Cargo" value=<?php echo $cargo; ?> readonly>
         </div>
         <h2 class="subtitulo">Devengados</h2>
                 <div class="form-group">
@@ -66,28 +67,28 @@
                     </div>
                     <div class="column">
                         <label for="salarioDiasLaborados">Salario días laborados:</label>
-                        <input type="text" id="salarioDiasLaborados" name="salarioDiasLaborados" class="form-input" placeholder="Salario días laborados" disabled/>
+                        <input type="text" id="salarioDiasLaborados" name="salarioDiasLaborados" class="form-input" placeholder="Salario días laborados" readonly/>
                         
                         <label for="salarioVacaciones">Salario vacaciones disfrutadas:</label>
-                        <input type="text" id="salarioVacaciones" name="salarioVacaciones" class="form-input" placeholder="Salario vacaciones disfrutadas" disabled/>
+                        <input type="text" id="salarioVacaciones" name="salarioVacaciones" class="form-input" placeholder="Salario vacaciones disfrutadas" readonly/>
                         
                         <label for="salarioAuxilioTransporte">Salario auxilio de transporte:</label>
-                        <input type="text" id="salarioAuxilioTransporte" name="salarioAuxilioTransporte" class="form-input" placeholder="Salario auxilio de transporte" disabled/>
+                        <input type="text" id="salarioAuxilioTransporte" name="salarioAuxilioTransporte" class="form-input" placeholder="Salario auxilio de transporte" readonly/>
                         
                         <label for="salarioPagoIncapacidadEPS">Salario pago incapacidad EPS:</label>
-                        <input type="text" id="salarioPagoIncapacidadEPS" name="salarioPagoIncapacidadEPS" class="form-input" placeholder="Salario pago incapacidad EPS" disabled/>
+                        <input type="text" id="salarioPagoIncapacidadEPS" name="salarioPagoIncapacidadEPS" class="form-input" placeholder="Salario pago incapacidad EPS" readonly/>
                         
                         <label for="salarioPagoIncapacidadARL">Salario pago incapacidad ARL:</label>
-                        <input type="text" id="salarioPagoIncapacidadARL" name="salarioPagoIncapacidadARL" class="form-input" placeholder="Salario pago incapacidad ARL" disabled/>
+                        <input type="text" id="salarioPagoIncapacidadARL" name="salarioPagoIncapacidadARL" class="form-input" placeholder="Salario pago incapacidad ARL" readonly/>
                         
                         <label for="recargoNocturno">Recargo nocturno:</label>
-                        <input type="text" id="recargoNocturno" name="recargoNocturno" class="form-input" placeholder="Recargo nocturno" disabled/>
+                        <input type="text" id="recargoNocturno" name="recargoNocturno" class="form-input" placeholder="Recargo nocturno" readonly/>
                         
                         <label for="recargoDominical">Recargo dominical:</label>
-                        <input type="text" id="recargoDominical" name="recargoDominical" class="form-input" placeholder="Recargo dominical" disabled/>
+                        <input type="text" id="recargoDominical" name="recargoDominical" class="form-input" placeholder="Recargo dominical" readonly/>
                         
                         <label for="auxilioAlimentacion">Auxilio de alimentación:</label>
-                        <input type="text" id="auxilioAlimentacion" name="auxilioAlimentacion" class="form-input" placeholder="Auxilio de alimentación" disabled/>
+                        <input type="text" id="auxilioAlimentacion" name="auxilioAlimentacion" class="form-input" placeholder="Auxilio de alimentación" readonly/>
                     </div>
                 </div>
                 <div class="button-group">
@@ -96,13 +97,13 @@
                 <h2 class="subtitulo">Deducciones</h2>
                         <div class="column">
                             <label for="salud">Salud:</label>
-                            <input type="text" id="salud" name="salud" class="form-input" placeholder="Salud" disabled/>
+                            <input type="text" id="salud" name="salud" class="form-input" placeholder="Salud" readonly/>
                     
                             <label for="pension">Pensión:</label>
-                            <input type="text" id="pension" name="pension" class="form-input" placeholder="Pensión" disabled/>
+                            <input type="text" id="pension" name="pension" class="form-input" placeholder="Pensión" readonly/>
 
                             <label for="fondoSolidaridadPensional">Fondo Solidaridad Pensional:</label>
-                            <input type="text" id="fondoSolidaridadPensional" name="fondoSolidaridadPensional" class="form-input" placeholder="Fondo Solidaridad Pensional" disabled/>
+                            <input type="text" id="fondoSolidaridadPensional" name="fondoSolidaridadPensional" class="form-input" placeholder="Fondo Solidaridad Pensional" readonly/>
                         </div>
                         <div class="column">
                             <label for="desembolso">Desembolso:</label>
@@ -150,17 +151,17 @@
 
                         <div class="form-group">
                             <label for="totalDevengado">Total Devengado:</label>
-                            <input type="number" id="totalDevengado" name="totalDevengado" class="form-input" placeholder="Total Devengado" value="0" disabled>
+                            <input type="number" id="totalDevengado" name="totalDevengado" class="form-input" placeholder="Total Devengado" value="0" readonly>
                         </div>
 
                         <div class="form-group">
                             <label for="totalDeducciones">Total Deducciones:</label>
-                            <input type="number" id="totalDeducciones" name="totalDeducciones" class="form-input" placeholder="Total Deducciones" value="0" disabled>
+                            <input type="number" id="totalDeducciones" name="totalDeducciones" class="form-input" placeholder="Total Deducciones" value="0" readonly>
                         </div>
 
                         <div class="form-group">
                             <label for="totalNomina">Total Nómina:</label>
-                            <input type="number" id="totalNomina" name="totalNomina" class="form-input" placeholder="Total Nómina" value="0" disabled>
+                            <input type="number" id="totalNomina" name="totalNomina" class="form-input" placeholder="Total Nómina" value="0" readonly>
                         </div>
             <div class="button-group">
                     <button class="button" name="actualizar">Agregar nomina</button>
